@@ -13,7 +13,8 @@ func main() {
 	//appendSliceWithoutCap()
 	//sliceOfSliceWithCapRestriction()
 	//sliceElementIteration()
-	accessSlicePartly()
+	//accessSlicePartly()
+	deleteFromSlice()
 }
 
 func emptySlice() {
@@ -79,6 +80,19 @@ func accessSlicePartly() {
 	for i := 1; i < len(slice)-1; i++ {
 		fmt.Printf("index: %v, value: %v\n", i, slice[i])
 	}
+}
+
+func deleteFromSlice() {
+	slice := []int{10, 20, 30, 40, 50}
+	printSlice(slice)
+	itemToDelete := 30
+	for i, val := range slice {
+		if val == itemToDelete {
+			slice = append(slice[:i], slice[i+1:]...)
+		}
+	}
+	printSlice(slice)
+
 }
 
 func printSlice(slice []int) {
